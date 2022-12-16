@@ -13,13 +13,13 @@ void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 		/* {"pint", _pint}, {"pop", _pop}, {"swap", _swap},
 		   {"add", _add}, {"nop", _nop}, */{NULL, NULL}
 	};
-	int i = 0, char *val;
+	int i = 0;
+	char *val;
 	
 if (buffer != NULL)
 {
 	while (op_list[i].opcode != NULL)
-	{
-		if (strcmp(op_list[i].opcode, buffer) == 0)
+	{	if (strcmp(op_list[i].opcode, buffer) == 0)
 		{
 		if (i == 0)
 		{
