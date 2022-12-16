@@ -6,7 +6,7 @@
  */
 int main(int argc, char *argv[])
 {
-	FILE* fd; /* create a file descriptor */
+	FILE *fd; /* create a file descriptor */
 	char *buffer; /* line of the file */
 	size_t buf_size = 0; /* the size of the buffer */
 	ssize_t read; /* to read line per line */
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	fd = fopen(argv[1], "r"); /* to open and to read the file bytecode*/
 	if (fd == NULL) /* if it's not possible to open the file */
 	{
@@ -34,12 +34,12 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while((read = getline(&buffer, &buf_size, fd)) != -1) /* read line/line */
+	while ((read = getline(&buffer, &buf_size, fd)) != -1) /* read line/line */
 	{
 		opcodes = strtok(buffer, " \n\t"); /* to cut int the line */
 		get_opcodes(stack, opcodes, line_number);
 		line_number++;
 	}
 	fclose(fd);
-	return(0);
+	return (0);
 }

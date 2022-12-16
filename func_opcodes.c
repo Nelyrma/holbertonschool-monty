@@ -22,13 +22,13 @@ void _push(stack_t **stack, unsigned int line_number)
 	new_stack->prev = NULL;
 
 
-	if(*stack != NULL) /* if the stack is empty */
+	if (*stack != NULL) /* if the stack is empty */
 	{
 		(*stack)->prev = new_stack;
-		new_stack->next = *stack;  /* to push on the stack(elements of the stack are grouped */
+		new_stack->next = *stack;
+		/* to push on the stack(elements of the stack are grouped */
 	}
 	(*stack) = new_stack;
-	//printf("%d\n", (*stack)->n);
 }
 
 
