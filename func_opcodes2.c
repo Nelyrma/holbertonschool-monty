@@ -8,24 +8,23 @@ int value;
  */
 void _pint(stack_t **stack, unsigned int line_number)
 {
-        if (!stack || !*stack)
-        {
-                fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
-                exit(EXIT_FAILURE);
-        }
-        printf("%d\n", (*stack)->n);
+	if (!stack || !*stack)
+	{
+		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }
 
 
 /**
  * _swap - swap locations of previous stack with the top stack
- * @h: node to be swapped
+ * @stack: node to be swapped
  * @line_number: node number
  */
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
-
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -51,9 +50,24 @@ void _swap(stack_t **stack, unsigned int line_number)
 }
 
 
+void _add(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	(*stack)->next->n += (*stack)->n;
+	(*stack) = (*stack)->next;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}
+
+
 /**
  * _nop - do nothing
- * @h: head of list
+ * @stack: head of list
  * @line_number: bytecode line number
  */
 void _nop(stack_t **stack, unsigned int line_number)
