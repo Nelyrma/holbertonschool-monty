@@ -23,32 +23,37 @@ void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 	};
 	int i = 0;
 	char *val;
-if (buffer != NULL)
-{
-	while (op_list[i].opcode != NULL)
+	if (buffer != NULL)
 	{
-		if (strcmp(op_list[i].opcode, buffer) == 0)
+		while (op_list[i].opcode != NULL)
 		{
-			if (i == 0)
+			if (strcmp(op_list[i].opcode, buffer) == 0)
 			{
-				val = strtok(NULL, " \n\t");
-				if (val)
+				if (i == 0)
 				{
-					if(_isdigit(val) == 1)
+					val = strtok(NULL, " \n\t");
+					if (val)
+					{
+						if(_isdigit(val) == 1)
+						{
+							fprintf(stderr, "L%i: usage: push integer\n", line_number);
+							exit(EXIT_FAILURE);
+						}
+
+						value = atoi(val);
+					}
+					else
 					{
 						fprintf(stderr, "L%i: usage: push integer\n", line_number);
 						exit(EXIT_FAILURE);
 					}
-				
-					value = atoi(val);
 				}
+				op_list[i].f(stack, line_number);
+				return;
 			}
-			op_list[i].f(stack, line_number);
-			return;
+			i++;
 		}
-		i++;
+		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, op_list[i].opcode);
+		exit(EXIT_FAILURE);
 	}
-	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, op_list[i].opcode);
-	exit(EXIT_FAILURE);
-}
 }
