@@ -35,3 +35,30 @@ void free_all(stack_t **stack)
 	}
 	free(*stack);
 }
+
+
+
+/**
+ * delete_top_stack - to delete the element at the  top of the stack
+ * @stack: top of the list
+
+ */
+
+void delete_top_stack(stack_t **stack)
+{
+	stack_t *delete = NULL;
+
+	delete = *stack;
+
+	if ((*stack)->next == NULL)
+	{
+		*stack = NULL;
+		free(delete);
+	}
+	else
+	{
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+		free(delete);
+	}
+}

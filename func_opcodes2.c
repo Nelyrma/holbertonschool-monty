@@ -50,6 +50,11 @@ void _swap(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * _add - to add the top two elements of the stack
+ * @stack: the element at the top of the stack.
+ * @line_number: the line traited.
+ */
 void _add(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
@@ -62,6 +67,24 @@ void _add(stack_t **stack, unsigned int line_number)
 	(*stack) = (*stack)->next;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
+}
+
+
+/**
+ * pop - removes node at front of the stack
+ * @stack: the top of the stack
+ * @line_number: bytecode line number
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("L%i: can't pop an empty stack\n", line_number);
+		free_all(stack);
+		exit(EXIT_FAILURE);
+	}
+	else
+		delete_top_stack(stack);
 }
 
 

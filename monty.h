@@ -57,4 +57,5 @@ void _add(stack_t **stack, unsigned int line_number);
 /* help functions */
 int _isdigit(char *str);
 void free_all(stack_t **stack);
+void delete_top_stack(stack_t **stack);
 #endif

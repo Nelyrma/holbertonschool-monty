@@ -49,7 +49,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 
 	while (temp != NULL)
 	{
-		printf("%d\n", temp->n);	
+		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
 	free(temp);

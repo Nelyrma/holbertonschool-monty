@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	stack_t *stack = NULL; /*the top of the stack */
 	char *opcodes; /* to strtok the line of the file*/
 	unsigned int line_number = 1;
-	
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
