@@ -8,6 +8,7 @@ int value;
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_stack;
+	(void)line_number;
 
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
