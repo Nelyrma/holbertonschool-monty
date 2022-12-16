@@ -29,6 +29,7 @@ if (buffer != NULL)
 		{
 		if (_isdigit(val) == 1)
 		{fprintf(stderr, "L%i: usage: push integer\n", line_number);
+		free_all(stack);
 		exit(EXIT_FAILURE);
 	}
 			value = atoi(val);
@@ -36,6 +37,7 @@ if (buffer != NULL)
 		else
 		{
 		fprintf(stderr, "L%i: usage: push integer\n", line_number);
+		free_all(stack);
 		exit(EXIT_FAILURE);
 		}
 		}

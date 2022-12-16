@@ -7,13 +7,14 @@ int value;
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_stack;
+	stack_t *new_stack = NULL;
 	(void)line_number;
 
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
+		free(new_stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -44,12 +45,12 @@ void _pall(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
-
 	temp = *stack;
 
 	while (temp != NULL)
 	{
-		printf("%d\n", temp->n);
+		printf("%d\n", temp->n);	
 		temp = temp->next;
 	}
+	free(temp);
 }
