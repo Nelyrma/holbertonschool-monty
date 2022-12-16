@@ -1,4 +1,5 @@
 #include "monty.h"
+int value;
 /**
  * _push - to add an item to the stack.
  * @stack: the element at the top of the stack.
@@ -7,12 +8,6 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_stack;
-
-	if(_isdigit(value) == 0)
-	{
-		fprintf(stderr, "L%i: usage: push integer", line_number);
-		exit(EXIT_FAILURE);
-	}
 
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
@@ -32,6 +27,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		new_stack->next = *stack;  /* to push on the stack(elements of the stack are grouped */
 	}
 	(*stack) = new_stack;
+	//printf("%d\n", (*stack)->n);
 }
 
 

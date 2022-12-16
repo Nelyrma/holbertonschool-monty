@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include <string.h>
 
-extern unsigned int value;
+extern int value;
 /*number of line in a file (always start at 1)*/
 
 /**
@@ -55,6 +55,6 @@ void _add(stack_t **stack, unsigned int line_number);
 
 
 /* help functions */
-int _isdigit(int c);
+int _isdigit(char *str);
 
 #endif
