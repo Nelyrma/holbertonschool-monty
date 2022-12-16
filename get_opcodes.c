@@ -10,8 +10,8 @@ int value;
 void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 {
 	instruction_t op_list[] = {{"push", _push}, {"pall", _pall},
-		/* {"pint", _pint}, {"pop", _pop}, {"swap", _swap}, */
-		/* {"add", _add}, {"nop", _nop}, */ {NULL, NULL}
+		{"pint", _pint}, {"nop", _nop}, {"swap", _swap},
+		/* {"add", _add}, {"pop", _pop}, */ {NULL, NULL}
 	};
 	int i = 0;
 	char *val;
