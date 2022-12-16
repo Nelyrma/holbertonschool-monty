@@ -16,9 +16,10 @@ int main(int argc, char *argv[])
 
 	stack = malloc(sizeof(stack_t *));
 	if (stack == NULL)
-		; // TODO add an error here and exit
-
-
+	{
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 	*stack = NULL;
 	if (argc != 2)
 	{
