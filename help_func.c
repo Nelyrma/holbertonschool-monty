@@ -41,7 +41,6 @@ void free_all(stack_t **stack)
 /**
  * delete_top_stack - to delete the element at the  top of the stack
  * @stack: top of the list
-
  */
 
 void delete_top_stack(stack_t **stack)
