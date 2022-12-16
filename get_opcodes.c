@@ -23,7 +23,8 @@ void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 	};
 	int i = 0;
 	char *val;
-
+if (buffer != NULL)
+{
 	while (op_list[i].opcode != NULL)
 	{
 		if (strcmp(op_list[i].opcode, buffer) == 0)
@@ -49,4 +50,5 @@ void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 	}
 	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, op_list[i].opcode);
 	exit(EXIT_FAILURE);
+}
 }

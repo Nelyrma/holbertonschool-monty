@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
  * _isdigit - check for a digit
- * @c: the character to check
- * Return: 1 if c is a digit, 0 otherwize
+ * @str: pointer string
+ * Return: 0 if c is a digit, 1 otherwize
  */
 int _isdigit(char *str)
 {
