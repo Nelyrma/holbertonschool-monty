@@ -6,16 +6,14 @@
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	int n = 0;
 	stack_t *new_stack;
 
 	if(_isdigit(value) == 0)
 	{
-		fprintf(stderr, "L<%i>: usage: push integer", line_number);
+		fprintf(stderr, "L%i: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	n = value;
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
 	{
@@ -23,20 +21,17 @@ void _push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	new_stack->n = n; /* first element and the only one */
+	new_stack->n = value; /* first element and the only one */
 	new_stack->next = NULL;
 	new_stack->prev = NULL;
-	
-	
-	if(stack == NULL) /* if the stack is empty */
-	{
-		stack = &new_stack;
-	}
-	else
+
+
+	if(*stack != NULL) /* if the stack is empty */
 	{
 		(*stack)->prev = new_stack;
 		new_stack->next = *stack;  /* to push on the stack(elements of the stack are grouped */
 	}
+	(*stack) = new_stack;
 }
 
 
@@ -47,21 +42,17 @@ void _push(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
-	int n = 0;
-	int i = 0; /* to travel in all elements of the stack */
-	stack_t *new_stack;
+	stack_t *temp;
 	(void)line_number;
-	(void)*stack;
 
-	new_stack = malloc(sizeof(stack_t));
-	if (new_stack == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed");
+	if (stack == NULL)
 		exit(EXIT_FAILURE);
-	}        while (new_stack != NULL)
+
+	temp = *stack;
+
+	while (temp != NULL)
 	{
-		printf("%d\n", new_stack->n);
-		i++;
-		new_stack = new_stack->next;
+		printf("%d\n", temp->n);
+		temp = temp->next;
 	}
 }

@@ -13,35 +13,30 @@ void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 		{"push", _push},
 		{"pall", _pall},
 		/*
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
-		*/
+		   {"pint", _pint},
+		   {"pop", _pop},
+		   {"swap", _swap},
+		   {"add", _add},
+		   {"nop", _nop},
+		 */
 		{NULL, NULL}
 	};
 	int i = 0;
 	char *val;
-	char *command;
 
 	while (op_list[i].opcode != NULL)
 	{
 		if (strcmp(op_list[i].opcode, buffer) == 0)
 		{
-			command = buffer;
-			printf("buffer: %s\n", buffer);
 			val = strtok(NULL, " \n");
 			if (val)
 				value = atoi(val);
 			op_list[i].f(stack, line_number);
 			return;
 		}
-		else
-		{
-			fprintf(stderr, "L<%i>: unknown instruction <%s>\n", line_number, op_list[i].opcode);
-			exit(EXIT_FAILURE);
-		}
 		i++;
 	}
+	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, op_list[i].opcode);
+	exit(EXIT_FAILURE);
+
 }

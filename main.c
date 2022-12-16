@@ -14,6 +14,12 @@ int main(int argc, char *argv[])
 	char *opcodes; /* to strtok the line of the file*/
 	unsigned int line_number = 1;
 
+	stack = malloc(sizeof(stack_t *));
+	if (stack == NULL)
+		; // TODO add an error here and exit
+
+
+	*stack = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -23,16 +29,14 @@ int main(int argc, char *argv[])
 	fd = fopen(argv[1], "r"); /* to open and to read the file bytecode*/
 	if (fd == NULL) /* if it's not possible to open the file */
 	{
-		fprintf(stderr, "Error: Can't open file <%s>\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
 	while((read = getline(&buffer, &buf_size, fd)) != -1) /* read line/line */
 	{
-		value = 0;
 		opcodes = strtok(buffer, " \n\t"); /* to cut int the line */
 		get_opcodes(stack, opcodes, line_number);
-		printf("buffer, line number %d : %s\n", line_number, opcodes);
 		line_number++;
 	}
 	fclose(fd);
