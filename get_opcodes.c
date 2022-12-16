@@ -53,7 +53,7 @@ void get_opcodes(stack_t **stack, char *buffer, unsigned int line_number)
 			}
 			i++;
 		}
-		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, op_list[i].opcode);
+		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, buffer);
 		exit(EXIT_FAILURE);
 	}
 }
